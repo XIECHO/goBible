@@ -6,11 +6,12 @@ import (
 	"io"
 	"os"
 	"unicode"
+	"unicode/utf8"
 )
 
 func main() {
 	counts := make(map[rune]int)
-	var utflen [uft8.UTFMax + 1]int
+	var utflen [utf8.UTFMax + 1]int
 	invalid := 0
 
 	in := bufio.NewReader(os.Stdin)
@@ -31,7 +32,7 @@ func main() {
 		utflen[n]++
 	}
 	fmt.Printf("rune\tcount\n")
-	for c, n := range utflen {
+	for i, n := range utflen {
 		if i > 0 {
 			fmt.Printf("%d\t%d\n", i, n)
 		}
