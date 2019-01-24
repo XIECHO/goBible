@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -16,13 +17,13 @@ type Employee struct {
 }
 
 func main() {
-	a := map[int]*Employee{}
+	a := make(map[int]*Employee)
 	a[0] = &Employee{}
 	a[0].Salary = 500
 
-	b := map[int]Employee{}
+	b := make(map[int]Employee)
 	b[0] = Employee{}
-	//b[0].Salary = 500
+	b[0].Salary = 500
 
 	var tmp = &[]Employee{Employee{}, Employee{Salary: 9000}}
 	var temp = map[int]*Employee{}
@@ -48,5 +49,6 @@ func main() {
 
 	var lll map[string]int
 	fmt.Println(lll)
+	os.Exit(1)
 
 }
