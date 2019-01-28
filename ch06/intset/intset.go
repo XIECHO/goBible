@@ -1,6 +1,9 @@
 package intset
 
-import "bytes"
+import (
+	"bytes"
+	"fmt"
+)
 
 type IntSet struct {
 	words []uint64
@@ -36,5 +39,15 @@ func (s *IntSet) String() string {
 		if word == 0 {
 			continue
 		}
+		for j := 0; j < 64; j++ {
+			if word&(1<<uint(j)) != 0 {
+				if buf.Len() > len("{") {
+					buf.WriteByte(' ')
+				}
+				fmt.Fprintf(&buf, "%d", 64*i+j)
+			}
+		}
 	}
+	buf.WriteByte('}')
+	return buf.String()
 }
