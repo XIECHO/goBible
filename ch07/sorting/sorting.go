@@ -1,4 +1,4 @@
-package sorting
+package main
 
 import (
 	"fmt"
@@ -46,3 +46,12 @@ type byArtist []*Track
 func (x byArtist) Len() int           { return len(x) }
 func (x byArtist) Less(i, j int) bool { return x[i].Artist < x[j].Artist }
 func (x byArtist) Swap(i, j int)      { x[i], x[j] = x[j], x[i] }
+
+func main() {
+	a := []string{"ni", "wo", "ta"}
+	fmt.Println(a)
+	// sort.Sort(sort.Reverse(byArtist(tracks)))
+	// printTracks(tracks)
+	// sort.Sort(sort.Reverse(byArtist(tracks)))
+	// printTracks(tracks)
+}
